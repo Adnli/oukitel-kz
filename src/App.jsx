@@ -188,26 +188,27 @@ function useActiveSection(ids, headerOffset = 96) {
   return active;
 }
 
-const ProductCard = ({ p, navTick }) => {
+const ProductCard = ({ p }) => {
   const Icon = p.icon;
   const navigate = useNavigate();
 
   const ref = useRef(null);
-  const inView = useInView(ref, { amount: 0.3, margin: "-10% 0px -25% 0px" });
+  const inView = useInView(ref, {
+    amount: 0.3,
+    margin: "-10% 0px -25% 0px",
+    once: true,
+  });
   const controls = useAnimationControls();
 
   React.useEffect(() => {
     if (!inView) return;
-    controls.set({ opacity: 0, y: 10 });
-    requestAnimationFrame(() => {
-      controls.start({ opacity: 1, y: 0, transition: { duration: 0.5 } });
-    });
-  }, [navTick, inView, controls]);
+    controls.start({ opacity: 1, y: 0, transition: { duration: 0.5 } });
+  }, [inView, controls]);
 
   const cover = (p.images && p.images.length ? p.images[0] : p.image) || "";
 
   return (
-    <motion.div ref={ref} animate={controls}>
+    <motion.div ref={ref} initial={{ opacity: 0, y: 10 }} animate={controls}>
       <Card className="overflow-hidden rounded-2xl shadow-sm">
         <div className="relative aspect-[16/10]">
           {cover ? (
@@ -259,34 +260,36 @@ const ProductCard = ({ p, navTick }) => {
   );
 };
 
-const GalleryGrid = ({ items, navTick }) => (
+const GalleryGrid = ({ items }) => (
   <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
     {items.map((g, idx) => (
-      <GalleryCard key={`${g.title}-${idx}`} g={g} navTick={navTick} />
+      <GalleryCard key={`${g.title}-${idx}`} g={g} />
     ))}
   </div>
 );
 
-const GalleryCard = ({ g, navTick }) => {
+const GalleryCard = ({ g }) => {
   const ref = useRef(null);
-  const inView = useInView(ref, { amount: 0.2, margin: "-10% 0px -25% 0px" });
+  const inView = useInView(ref, {
+    amount: 0.2,
+    margin: "-10% 0px -25% 0px",
+    once: true,
+  });
   const controls = useAnimationControls();
 
   React.useEffect(() => {
     if (!inView) return;
-    controls.set({ opacity: 0, scale: 0.98 });
-    requestAnimationFrame(() => {
-      controls.start({
-        opacity: 1,
-        scale: 1,
-        transition: { duration: 0.5 },
-      });
+    controls.start({
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.5 },
     });
-  }, [navTick, inView, controls]);
+  }, [inView, controls]);
 
   return (
     <motion.div
       ref={ref}
+      initial={{ opacity: 0, scale: 0.98 }}
       animate={controls}
       className="group relative overflow-hidden rounded-2xl border bg-card"
     >
@@ -310,19 +313,23 @@ const GalleryCard = ({ g, navTick }) => {
   );
 };
 
-const YoutubeList = ({ items, navTick }) => (
+const YoutubeList = ({ items }) => (
   <div className="grid md:grid-cols-2 gap-4">
     {items.map((v) => (
-      <YoutubeCard key={v.id} v={v} navTick={navTick} />
+      <YoutubeCard key={v.id} v={v} />
     ))}
   </div>
 );
 
-const YoutubeCard = ({ v, navTick }) => {
+const YoutubeCard = ({ v }) => {
   const ref = useRef(null);
 
   // когда карточка реально попала в зону видимости
-  const inView = useInView(ref, { amount: 0.25, margin: "-10% 0px -25% 0px" });
+  const inView = useInView(ref, {
+    amount: 0.25,
+    margin: "-10% 0px -25% 0px",
+    once: true,
+  });
 
   const controls = useAnimationControls();
 
@@ -330,25 +337,22 @@ const YoutubeCard = ({ v, navTick }) => {
     if (!inView) return;
 
     // сброс в "скрыто" и запуск заново
-    controls.set({ opacity: 0, y: 10 });
-
-    requestAnimationFrame(() => {
-      controls.start({
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.5 },
-      });
+    controls.start({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 },
     });
-  }, [navTick, inView, controls]);
+  }, [inView, controls]);
 
   return (
-    <motion.div ref={ref} animate={controls}>
+    <motion.div ref={ref} initial={{ opacity: 0, y: 10 }} animate={controls}>
       <Card className="rounded-2xl overflow-hidden">
         <div className="aspect-video">
           <iframe
             className="h-full w-full"
             src={`https://www.youtube-nocookie.com/embed/${v.id}`}
             title={v.title}
+            loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
@@ -500,14 +504,35 @@ const goTo = (id) => {
 };
 
 const Hero = () => {
+  const [api, setApi] = useState(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
   const autoplay = React.useRef(
     Autoplay({ delay: 4500, stopOnInteraction: true })
   )
+
+  React.useEffect(() => {
+    if (!api) return;
+
+    const handleSelect = () => {
+      setCurrentSlide(api.selectedScrollSnap());
+    };
+
+    handleSelect();
+    api.on("select", handleSelect);
+    api.on("reInit", handleSelect);
+
+    return () => {
+      api.off("select", handleSelect);
+      api.off("reInit", handleSelect);
+    };
+  }, [api]);
 
   return (
     <section id="home" className="relative">
       <Carousel
         className="w-full"
+        setApi={setApi}
         plugins={[autoplay.current]}
         opts={{ loop: true }}
         onMouseEnter={autoplay.current.stop}
@@ -564,9 +589,15 @@ const Hero = () => {
                 {/* Индикаторы снизу (линии/точки) */}
                 <div className="absolute bottom-5 left-0 right-0 z-10 flex items-center justify-center gap-2">
                   {heroSlides.map((_, i) => (
-                    <span
+                    <button
                       key={i}
-                      className="h-[3px] w-10 rounded-full bg-white/35"
+                      type="button"
+                      aria-label={`Перейти к слайду ${i + 1}`}
+                      onClick={() => api?.scrollTo(i)}
+                      className={classNames(
+                        "h-[3px] w-10 rounded-full transition-colors",
+                        i === currentSlide ? "bg-white" : "bg-white/35"
+                      )}
                     />
                   ))}
                 </div>
@@ -583,7 +614,7 @@ const Hero = () => {
   )
 };
 
-const Products = ({ navTick }) => {
+const Products = () => {
   const [query, setQuery] = useState("");
   const products = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -615,30 +646,30 @@ const Products = ({ navTick }) => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {products.map((p) => (
-          <ProductCard key={p.name} p={p} navTick={navTick} />
+          <ProductCard key={p.name} p={p} />
         ))}
       </div>
     </Section>
   );
 };
 
-const Gallery = ({ navTick }) => (
+const Gallery = () => (
   <Section
     id="gallery"
     title="Галерея"
     subtitle="Короткая подборка фото для ознакомления: сценарии использования, стиль, атмосфера."
   >
-    <GalleryGrid items={gallerySeed} navTick={navTick} />
+    <GalleryGrid items={gallerySeed} />
   </Section>
 );
 
-const Reviews = ({ navTick }) => (
+const Reviews = () => (
   <Section
     id="reviews"
     title="Видео-обзоры"
     subtitle="Список YouTube-видео: вставьте ID роликов или ссылки на обзоры от казахстанских/русскоязычных авторов."
   >
-    <YoutubeList items={youtubeReviewsSeed} navTick={navTick} />
+    <YoutubeList items={youtubeReviewsSeed} />
   </Section>
 );
 
@@ -725,8 +756,6 @@ const Footer = () => (
 );
 
 export default function App() {
-  const [navTick, setNavTick] = useState(0);
-
   const nav = useNavigate();
   const loc = useLocation();
   const navigateTo = (id) => {
@@ -740,7 +769,6 @@ export default function App() {
       const y = el.getBoundingClientRect().top + window.scrollY - headerOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
 
-      setTimeout(() => setNavTick((t) => t + 1), 700);
     }, 50);
     return;
   }
@@ -752,7 +780,6 @@ export default function App() {
   const y = el.getBoundingClientRect().top + window.scrollY - headerOffset;
   window.scrollTo({ top: y, behavior: "smooth" });
 
-  setTimeout(() => setNavTick((t) => t + 1), 700);
 };
 
   const activeOnHome = useActiveSection(navItems.map((n) => n.id), 96);
@@ -770,9 +797,9 @@ export default function App() {
         element={
           <>
             <Hero />
-            <Products navTick={navTick} />
-            <Gallery navTick={navTick} />
-            <Reviews navTick={navTick} />
+            <Products />
+            <Gallery />
+            <Reviews />
           </>
         }
       />
