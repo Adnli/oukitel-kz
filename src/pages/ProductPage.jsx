@@ -160,9 +160,6 @@ export default function ProductPage() {
               <BadgeCheck className="h-4 w-4" /> 100% безопасные покупки
             </span>
             <span className="inline-flex items-center gap-2">
-              <Shield className="h-4 w-4" /> Гарантия 1+2 года (по подписке)
-            </span>
-            <span className="inline-flex items-center gap-2">
               <Truck className="h-4 w-4" /> Бесплатная доставка
             </span>
             <span className="inline-flex items-center gap-2">
@@ -234,7 +231,7 @@ export default function ProductPage() {
           </div>
 
           {/* “payment box” как Klarna-блок */}
-          <div className="mt-5 rounded-2xl border bg-background p-4">
+          {/* <div className="mt-5 rounded-2xl border bg-background p-4">
             <div className="text-sm font-medium">
               Рассрочка / оплата частями (демо)
             </div>
@@ -255,10 +252,10 @@ export default function ProductPage() {
                 Узнать больше
               </Button>
             </div>
-          </div>
+          </div> */}
 
           {/* преимущества как в примере */}
-          <div className="mt-5 grid gap-3 text-sm">
+          {/* <div className="mt-5 grid gap-3 text-sm">
             <div className="flex items-start gap-2">
               <Shield className="h-5 w-5 text-muted-foreground mt-0.5" />
               <div>
@@ -278,7 +275,7 @@ export default function ProductPage() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* короткое описание + highlights */}
           <div className="mt-6">

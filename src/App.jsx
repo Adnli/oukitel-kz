@@ -72,34 +72,38 @@ const Section = ({ id, title, subtitle, children }) => (
 const navItems = [
   { id: "home", label: "Главная" },
   { id: "products", label: "Продукты" },
-  { id: "gallery", label: "Галерея" },
+  // { id: "gallery", label: "Галерея" },
   { id: "reviews", label: "Видео-обзоры" },
   { id: "contacts", label: "Контакты" },
 ];
 
 const heroSlides = [
   {
-    title: "OUKITEL — мощные смартфоны для реальной жизни",
-    desc: "Ударопрочные, автономные и готовые к любым условиям. Казахстанский официальный витринный сайт.",
-    tag: "Надёжность",
+    title: "OUKITEL P1000E PLUS",
+    desc: "Полностью модернизированная система электропитания",
+    tag: "Найдите решение для аварийного электроснаряжения",
+    slug: "oukitel-p1000e-plus-1800",
     image:
-      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1600&q=80",
+      "https://cdn.shopify.com/s/files/1/0670/1452/5248/files/1_2_7ec929ea-7651-4090-8a47-debd9d5e6653.png?v=1740019060",
   },
   {
-    title: "Автономность на первом месте",
-    desc: "Большие аккумуляторы, умные режимы энергосбережения и быстрая зарядка — чтобы не думать о розетке.",
-    tag: "Батарея",
+    title: "Полностью модернизированная система электропитания\nOUKITEL P2001 Plus",
+    desc: "",
+    tag: "Найдите решение для аварийного электроснабжения",
+    slug: "oukitel-p2001-plus-2400",
     image:
-      "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=1600&q=80",
+      "https://cdn.shopify.com/s/files/1/0670/1452/5248/files/20240605-154713.jpg?v=1717573650",
   },
   {
-    title: "Функции, которые помогают каждый день",
-    desc: "Камеры, защита, производительность — сбалансировано и практично.",
-    tag: "Практичность",
+    title: "Легкий дорожный рюкзак 6 кг, мощность 800 Вт.",
+    desc: "3500 циклов зарядки/разрядки обеспечивают срок службы в десять лет, а блок питания P800 прослужит вам еще дольше",
+    tag: "Новинка Oukitel P800",
+    slug: "oukitel-p800",
     image:
-      "https://images.unsplash.com/photo-1510557880182-3ad9c55a7d0b?auto=format&fit=crop&w=1600&q=80",
+      "https://cdn.shopify.com/s/files/1/0670/1452/5248/files/KV_e20cf2b9-c451-475b-9ed5-7f963b9264d4.png?v=1752118279",
   },
 ];
+
 
 const gallerySeed = [
   {
@@ -135,10 +139,10 @@ const gallerySeed = [
 ];
 
 const youtubeReviewsSeed = [
-  { title: "Обзор OUKITEL WP23 Pro — прочный и доступный", id: "dQw4w9WgXcQ" },
-  { title: "OUKITEL WP19: 21000 мА·ч — сколько живёт?", id: "3GwjfUFyY6M" },
-  { title: "OUKITEL C33 — бюджетный смартфон на каждый день", id: "M7lc1UVf-VE" },
-  { title: "OUKITEL RT3 — защищённый планшет в деле", id: "ysz5S6PUM-U" },
+  { title: "Крутой Гаджет для Выживания, Бизнеса и Отдыха! Oukitel P1000 Plus", id: "bSto7kxrhj4" },
+  { title: "Понятный обзор Oukitel P2001 Plus портативная зарядная станция.", id: "0u2uqsBBwuE" },
+  { title: "OUKITEL P800 Portable Power Station Review – 800W | 512Wh | Outdoor, RV & Camping Power", id: "Boqqx_wCsGE" },
+  { title: "Станция🔌🔋OUKITEL P2001E PLUS:Ответы на все вопросы с подробностями🙌🏻 Запуск в отсутствии света✨💫", id: "kp3mLmv9c6A" },
 ];
 
 function classNames(...xs) {
@@ -202,7 +206,7 @@ const ProductCard = ({ p }) => {
 
   React.useEffect(() => {
     if (!inView) return;
-    controls.start({ opacity: 1, y: 0, transition: { duration: 0.5 } });
+      controls.start({ opacity: 1, y: 0, transition: { duration: 0.5 } });
   }, [inView, controls]);
 
   const cover = (p.images && p.images.length ? p.images[0] : p.image) || "";
@@ -279,11 +283,11 @@ const GalleryCard = ({ g }) => {
 
   React.useEffect(() => {
     if (!inView) return;
-    controls.start({
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.5 },
-    });
+      controls.start({
+        opacity: 1,
+        scale: 1,
+        transition: { duration: 0.5 },
+      });
   }, [inView, controls]);
 
   return (
@@ -337,11 +341,11 @@ const YoutubeCard = ({ v }) => {
     if (!inView) return;
 
     // сброс в "скрыто" и запуск заново
-    controls.start({
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    });
+      controls.start({
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.5 },
+      });
   }, [inView, controls]);
 
   return (
@@ -439,12 +443,12 @@ const goTo = (id) => {
     <div className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur">
       <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between gap-3">
         <div className="flex items-center gap-2">
-          <div className="h-9 w-9 rounded-2xl border flex items-center justify-center">
+          {/* <div className="h-9 w-9 rounded-2xl border flex items-center justify-center">
             <span className="text-sm font-semibold">OK</span>
-          </div>
+          </div> */}
           <div className="leading-tight">
             <div className="font-semibold">OUKITEL Kazakhstan</div>
-            <div className="text-xs text-muted-foreground">Сайт‑визитка бренда</div>
+            {/* <div className="text-xs text-muted-foreground">Сайт‑визитка бренда</div> */}
           </div>
         </div>
 
@@ -506,17 +510,16 @@ const goTo = (id) => {
 const Hero = () => {
   const [api, setApi] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const nav = useNavigate();
 
   const autoplay = React.useRef(
     Autoplay({ delay: 4500, stopOnInteraction: true })
-  )
+  );
 
   React.useEffect(() => {
     if (!api) return;
 
-    const handleSelect = () => {
-      setCurrentSlide(api.selectedScrollSnap());
-    };
+    const handleSelect = () => setCurrentSlide(api.selectedScrollSnap());
 
     handleSelect();
     api.on("select", handleSelect);
@@ -527,6 +530,25 @@ const Hero = () => {
       api.off("reInit", handleSelect);
     };
   }, [api]);
+
+  const goToContacts = () => {
+    // если мы не на главной — сначала идем на главную, затем скроллим
+    nav("/", { state: { scrollTo: "contacts" } });
+
+    // если уже на главной — просто скроллим
+    requestAnimationFrame(() => {
+      const el = document.getElementById("contacts");
+      if (!el) return;
+      const headerOffset = 96;
+      const y = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    });
+  };
+
+  const goToProduct = (slug) => {
+    if (!slug) return;
+    nav(`/product/${slug}`);
+  };
 
   return (
     <section id="home" className="relative">
@@ -541,9 +563,7 @@ const Hero = () => {
         <CarouselContent>
           {heroSlides.map((s, idx) => (
             <CarouselItem key={idx}>
-              {/* Высота как у баннера */}
               <div className="relative h-[420px] md:h-[560px] lg:h-[680px] w-full">
-                {/* Фон-картинка */}
                 <img
                   src={s.image}
                   alt={s.title}
@@ -551,11 +571,9 @@ const Hero = () => {
                   loading={idx === 0 ? "eager" : "lazy"}
                 />
 
-                {/* Затемнение/градиент как на официальном */}
                 <div className="absolute inset-0 bg-black/35" />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/15 to-transparent" />
 
-                {/* Контент по центру */}
                 <div className="relative z-10 h-full">
                   <div className="mx-auto flex h-full max-w-6xl items-center justify-center px-4 text-center">
                     <div className="max-w-3xl">
@@ -563,7 +581,7 @@ const Hero = () => {
                         {s.tag}
                       </div>
 
-                      <h1 className="text-white font-semibold leading-tight text-3xl md:text-5xl">
+                      <h1 className="text-white font-semibold leading-tight text-3xl md:text-5xl whitespace-pre-line">
                         {s.title}
                       </h1>
 
@@ -572,12 +590,17 @@ const Hero = () => {
                       </p>
 
                       <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-                        <Button className="rounded-full px-6">
+                        <Button
+                          className="rounded-full px-6"
+                          onClick={() => goToProduct(s.slug)}
+                        >
                           Узнать больше
                         </Button>
+
                         <Button
                           variant="outline"
                           className="rounded-full px-6 bg-white/10 text-white border-white/30 hover:bg-white/15"
+                          onClick={goToContacts}
                         >
                           Купить сейчас
                         </Button>
@@ -586,7 +609,6 @@ const Hero = () => {
                   </div>
                 </div>
 
-                {/* Индикаторы снизу (линии/точки) */}
                 <div className="absolute bottom-5 left-0 right-0 z-10 flex items-center justify-center gap-2">
                   {heroSlides.map((_, i) => (
                     <button
@@ -606,12 +628,11 @@ const Hero = () => {
           ))}
         </CarouselContent>
 
-        {/* Стрелки как у баннера (по бокам) */}
         <CarouselPrevious className="left-4 h-10 w-10 rounded-full bg-white/10 border-white/20 text-white hover:bg-white/15" />
         <CarouselNext className="right-4 h-10 w-10 rounded-full bg-white/10 border-white/20 text-white hover:bg-white/15" />
       </Carousel>
     </section>
-  )
+  );
 };
 
 const Products = () => {
@@ -627,21 +648,21 @@ const Products = () => {
   return (
     <Section
       id="products"
-      title="Популярные модели"
-      subtitle="4–5 карточек для витрины. Можно расширить каталог и добавить реальные цены/наличие."
+      title="Наши товары"
+      // subtitle="4–5 карточек для витрины. Можно расширить каталог и добавить реальные цены/наличие."
     >
       <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between mb-6">
-        <div className="text-sm text-muted-foreground">
+        {/* <div className="text-sm text-muted-foreground">
           Подборка для главной страницы
-        </div>
-        <div className="max-w-sm w-full">
+        </div> */}
+        {/* <div className="max-w-sm w-full">
           <Input
             className="rounded-xl"
             placeholder="Поиск по моделям…"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-        </div>
+        </div> */}
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -653,21 +674,21 @@ const Products = () => {
   );
 };
 
-const Gallery = () => (
-  <Section
-    id="gallery"
-    title="Галерея"
-    subtitle="Короткая подборка фото для ознакомления: сценарии использования, стиль, атмосфера."
-  >
-    <GalleryGrid items={gallerySeed} />
-  </Section>
-);
+// const Gallery = () => (
+//   <Section
+//     id="gallery"
+//     title="Галерея"
+//     subtitle="Короткая подборка фото для ознакомления: сценарии использования, стиль, атмосфера."
+//   >
+//     <GalleryGrid items={gallerySeed} />
+//   </Section>
+// );
 
 const Reviews = () => (
   <Section
     id="reviews"
     title="Видео-обзоры"
-    subtitle="Список YouTube-видео: вставьте ID роликов или ссылки на обзоры от казахстанских/русскоязычных авторов."
+    subtitle=""
   >
     <YoutubeList items={youtubeReviewsSeed} />
   </Section>
@@ -680,8 +701,7 @@ const Footer = () => (
         <div>
           <div className="font-semibold">OUKITEL Kazakhstan</div>
           <div className="mt-2 text-sm text-muted-foreground">
-            Официальная витрина бренда (демо). Добавьте реальные реквизиты и ссылки
-            магазинов.
+            Официальная витрина бренда (демо).
           </div>
         </div>
 
@@ -691,7 +711,7 @@ const Footer = () => (
             <div className="flex items-center gap-2 text-muted-foreground">
               <Phone className="h-4 w-4" />
               <a className="hover:text-foreground" href="tel:+77000000000">
-                +7 (700) 000‑00‑00
+                +7 (707) 211 2053
               </a>
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
@@ -702,7 +722,7 @@ const Footer = () => (
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
               <MapPin className="h-4 w-4" />
-              <span>Алматы / Астана, Казахстан</span>
+              <span>Алматы, Казахстан</span>
             </div>
           </div>
 
@@ -725,7 +745,7 @@ const Footer = () => (
           </div>
         </div>
 
-        <div>
+        {/* <div>
           <div className="font-semibold">Подписка на новости</div>
           <div className="mt-2 text-sm text-muted-foreground">
             Оставьте email — будем присылать релизы и акции.
@@ -737,19 +757,19 @@ const Footer = () => (
           <div className="mt-3 text-xs text-muted-foreground">
             *В демо форма не отправляет данные.
           </div>
-        </div>
+        </div> */}
       </div>
 
       <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-muted-foreground">
         <div>© {new Date().getFullYear()} OUKITEL Kazakhstan. Все права защищены.</div>
-        <div className="flex gap-3">
+        {/* <div className="flex gap-3">
           <a className="hover:text-foreground" href="#">
             Политика конфиденциальности
           </a>
           <a className="hover:text-foreground" href="#">
             Договор оферты
           </a>
-        </div>
+        </div> */}
       </div>
     </div>
   </footer>
@@ -798,7 +818,7 @@ export default function App() {
           <>
             <Hero />
             <Products />
-            <Gallery />
+            {/* <Gallery /> */}
             <Reviews />
           </>
         }
