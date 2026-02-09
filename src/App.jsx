@@ -21,6 +21,7 @@ import {
   Mail,
   MapPin,
   ExternalLink,
+  MessageCircle
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView, useAnimationControls } from "framer-motion";
@@ -717,7 +718,7 @@ const Footer = () => (
             <div className="flex items-center gap-2 text-muted-foreground">
               <Mail className="h-4 w-4" />
               <a className="hover:text-foreground" href="mailto:sales@oukitel.kz">
-                sales@oukitel.kz
+                assekolb@gmail.com
               </a>
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
@@ -733,15 +734,25 @@ const Footer = () => (
               asChild
               title="Instagram"
             >
-              <a href="#" target="_blank" rel="noreferrer">
+              <a href="https://www.instagram.com/oukitel_kazakhstan?igsh=MWNkMGxkZGlnYXRwdQ%3D%3D&utm_source=qr" target="_blank" rel="noreferrer">
                 <Instagram className="h-4 w-4 mr-2" /> Instagram
               </a>
             </Button>
-            <Button variant="outline" className="rounded-xl" asChild title="YouTube">
+            <Button
+              variant="outline"
+              className="rounded-xl"
+              asChild
+              title="WhatsApp"
+            >
+              <a className="hover:text-foreground" href="https://wa.me/77072112053?text=Здравствуйте!%20Интересует%20продукция%20OUKITEL" target="_blank" rel="noreferrer">
+                <MessageCircle className="h-4 w-4" /> WhatsApp
+              </a>
+            </Button>
+            {/* <Button variant="outline" className="rounded-xl" asChild title="YouTube">
               <a href="#" target="_blank" rel="noreferrer">
                 <Youtube className="h-4 w-4 mr-2" /> YouTube
               </a>
-            </Button>
+            </Button> */}
           </div>
         </div>
 

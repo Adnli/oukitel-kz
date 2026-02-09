@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { productsSeed } from "@/data/products";
-import { Shield, Truck, RotateCcw, BadgeCheck } from "lucide-react";
+import { Shield, Truck, RotateCcw, BadgeCheck, ShoppingCart } from "lucide-react";
+
 
 function Stars({ value }) {
   const full = Math.round(value || 0);
@@ -112,6 +113,8 @@ function DiscountBadge({ price, oldPrice }) {
 export default function ProductPage() {
   const nav = useNavigate();
   const { slug } = useParams();
+  const kaspiLink = "https://l.kaspi.kz/shop/DCzNDJsuv4Kr9Zy";
+
 
   const product = productsSeed.find((p) => p.slug === slug);
 
@@ -229,6 +232,23 @@ export default function ProductPage() {
               </Badge>
             ))}
           </div>
+                    {/* Kaspi Buy */}
+          <div className="mt-5">
+            <a href={kaspiLink} target="_blank" rel="noreferrer">
+              <Button
+                size="lg"
+                className="w-full rounded-2xl h-12 text-base font-semibold bg-[#F14635] hover:bg-[#D93D2F] text-white"
+              >
+                <ShoppingCart className="h-5 w-5 mr-2" />
+                Купить
+              </Button>
+            </a>
+
+            <div className="mt-2 text-xs text-muted-foreground text-center">
+              Покупка через Kaspi Магазин
+            </div>
+          </div>
+
 
           {/* “payment box” как Klarna-блок */}
           {/* <div className="mt-5 rounded-2xl border bg-background p-4">

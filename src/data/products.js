@@ -4,7 +4,7 @@ export const productsSeed = [
   {
     name: "Портативная электростанция OUKITEL P1000E PLUS 1800 Вт/1024 Вт·ч",
     slug: "oukitel-p1000e-plus-1800",
-    price: "€549,00",
+    price: "349 000₸",
     // oldPrice: "€549,00",
     // rating: 4.7,
     // reviewsCount: 106,
@@ -26,7 +26,7 @@ export const productsSeed = [
   {
     name: "Портативная электростанция OUKITEL P2001 Plus 2400 Вт | 2048 Вт·ч",
     slug: "oukitel-p2001-plus-2400",
-    price: "€799,00",
+    price: "550 000₸",
     // oldPrice: "€799,00",
     // rating: 4.6,
     // reviewsCount: 84,
@@ -49,7 +49,7 @@ export const productsSeed = [
   {
     name: "Портативная электростанция OUKITEL P800 800 Вт | 512 Вт·ч",
     slug: "oukitel-p800",
-    price: "€269,00",
+    price: "178 500₸",
     // oldPrice: "€269,00",
     // rating: 4.5,
     // reviewsCount: 51,
@@ -70,7 +70,7 @@ export const productsSeed = [
   {
     name: "Портативная солнечная панель OUKITEL 400 Вт",
     slug: "solar-panel-oukitel-400",
-    price: "€599,00",
+    price: "250 000₸",
     // oldPrice: "€599,00",
     // rating: 4.6,
     // reviewsCount: 72,
