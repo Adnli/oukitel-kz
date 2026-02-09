@@ -113,7 +113,7 @@ function DiscountBadge({ price, oldPrice }) {
 export default function ProductPage() {
   const nav = useNavigate();
   const { slug } = useParams();
-  const kaspiLink = "https://l.kaspi.kz/shop/DCzNDJsuv4Kr9Zy";
+  const kaspiLink = "https://kaspi.kz/shop/info/merchant/30397613/review?productCode=146689347&masterSku=146689347&merchantSku=613550243&tabId=PRODUCT";
 
 
   const product = productsSeed.find((p) => p.slug === slug);
