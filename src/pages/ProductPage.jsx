@@ -206,13 +206,13 @@ export default function ProductPage() {
             {product.name}
           </h1>
 
-          <div className="mt-3 flex items-center gap-2">
+          {/* <div className="mt-3 flex items-center gap-2">
             <Stars value={product.rating} />
             <span className="text-sm text-muted-foreground">
               {product.rating?.toFixed?.(1) ?? product.rating} ·{" "}
               {product.reviewsCount ?? 0} отзывов
             </span>
-          </div>
+          </div> */}
 
           <div className="mt-4 flex flex-wrap items-end gap-3">
             <div className="text-3xl font-semibold">{price}</div>
@@ -233,7 +233,7 @@ export default function ProductPage() {
           </div>
                     {/* Kaspi Buy */}
           <div className="mt-5">
-            <a href={kaspiLink} target="_blank" rel="noreferrer">
+            <a href={product.kaspiReviewsUrl} target="_blank" rel="noreferrer">
               <Button
                 size="lg"
                 className="w-full rounded-2xl h-12 text-base font-semibold bg-[#F14635] hover:bg-[#D93D2F] text-white"
@@ -353,7 +353,7 @@ export default function ProductPage() {
 
             <div className="mt-4">
               {tab === "desc" ? (
-                <div className="text-sm leading-relaxed text-muted-foreground">
+                <div className="text-sm leading-relaxed text-muted-foreground whitespace-pre-line">
                   {product.description || "Описание скоро будет добавлено."}
                 </div>
               ) : null}
@@ -377,6 +377,24 @@ export default function ProductPage() {
           </div>
         </div>
       </div>
+                {product.kaspiReviewsUrl ? (
+  <div className="mt-10 rounded-2xl border bg-muted/10 p-6">
+    <div className="text-lg font-semibold">Отзывы</div>
+    <div className="mt-2 text-sm text-muted-foreground">
+      Отзывы покупателей размещены на Kaspi. Откройте страницу товара, чтобы посмотреть оценки и комментарии.
+    </div>
+
+    <div className="mt-4">
+      <a href={product.kaspiReviewsUrl} target="_blank" rel="noreferrer">
+  <Button className="rounded-2xl bg-[#F14635] hover:bg-[#D93D2F] text-white">
+    Смотреть отзывы на Kaspi →
+  </Button>
+</a>
+
+    </div>
+  </div>
+) : null}
+
     </div>
   );
 }

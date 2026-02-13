@@ -702,7 +702,7 @@ const Footer = () => (
         <div>
           <div className="font-semibold">OUKITEL Kazakhstan</div>
           <div className="mt-2 text-sm text-muted-foreground">
-            Официальная витрина бренда (демо).
+            Наша компания является официальным сертифицированным реселлером зарядных станций OUKITEL.
           </div>
         </div>
 
