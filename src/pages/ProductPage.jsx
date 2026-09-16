@@ -117,7 +117,9 @@ export default function ProductPage() {
 
   const product = productsSeed.find((p) => p.slug === slug);
 
-  React.useEffect(() => window.scrollTo({ top: 0, behavior: "auto" }), [slug]);
+  React.useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [slug]);
 
   React.useEffect(() => {
     document.title = product

@@ -516,6 +516,7 @@ const Hero = () => {
   const autoplay = React.useRef(
     Autoplay({ delay: 4500, stopOnInteraction: true })
   );
+  const carouselPlugins = React.useMemo(() => [autoplay.current], []);
 
   React.useEffect(() => {
     if (!api) return;
@@ -556,7 +557,7 @@ const Hero = () => {
       <Carousel
         className="w-full"
         setApi={setApi}
-        plugins={[autoplay.current]}
+        plugins={carouselPlugins}
         opts={{ loop: true }}
         onMouseEnter={autoplay.current.stop}
         onMouseLeave={autoplay.current.reset}
@@ -708,16 +709,21 @@ const Footer = () => (
 
         <div>
           <div className="font-semibold">Контакты</div>
+          <div className="mt-2 text-sm text-muted-foreground">
+            Для розничных и оптовых покупок
+            <br />
+            обратитесь по следующему телефону:
+          </div>
           <div className="mt-3 grid gap-2 text-sm">
             <div className="flex items-center gap-2 text-muted-foreground">
               <Phone className="h-4 w-4" />
-              <a className="hover:text-foreground" href="tel:+77000000000">
+              <a className="hover:text-foreground" href="tel:+77072112053">
                 +7 (707) 211 2053
               </a>
             </div>
             <div className="flex items-center gap-2 text-muted-foreground">
               <Mail className="h-4 w-4" />
-              <a className="hover:text-foreground" href="mailto:sales@oukitel.kz">
+              <a className="hover:text-foreground" href="mailto:assekolb@gmail.com">
                 assekolb@gmail.com
               </a>
             </div>
