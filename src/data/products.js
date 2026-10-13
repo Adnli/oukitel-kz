@@ -57,7 +57,7 @@ export const productsSeed = [
   {
     name: "Портативная электростанция OUKITEL P800 800 Вт | 512 Вт·ч",
     slug: "oukitel-p800",
-    price: "178 500₸",
+    price: "230 000₸",
     kaspiReviewsUrl: "https://l.kaspi.kz/shop/3tDy17fmQaBSx3q",
     // oldPrice: "€269,00",
     // rating: 4.5,
