@@ -8,7 +8,7 @@ export const productsSeed = [
   {
     name: "Портативная электростанция OUKITEL P1000E PLUS 1800 Вт/1024 Вт·ч",
     slug: "oukitel-p1000e-plus-1800",
-    price: "349 000₸",
+    price: "298 000₸",
     kaspiReviewsUrl: "https://l.kaspi.kz/shop/9XiWjietaN9rQ5W",
     // oldPrice: "€549,00",
     // rating: 4.7,
@@ -30,14 +30,14 @@ export const productsSeed = [
   },
 
   {
-    name: "Портативная электростанция OUKITEL P2001 Plus 2400 Вт | 2048 Вт·ч",
-    slug: "oukitel-p2001-plus-2400",
-    price: "550 000₸",
+    name: "Портативная электростанция OUKITEL P2001e Plus 2400 Вт | 2048 Вт·ч",
+    slug: "oukitel-p2001e-plus-2400",
+    price: "480 000₸",
     kaspiReviewsUrl: "https://l.kaspi.kz/shop/2gmpCR3pm8oMYja",
     // oldPrice: "€799,00",
     // rating: 4.6,
     // reviewsCount: 84,
-    chips: ["OUKITEL P2001 Plus", "2400 Вт/2048 Вт·ч"],
+    chips: ["OUKITEL P2001e Plus", "2400 Вт/2048 Вт·ч"],
     icon: BatteryCharging,
     images: [
       "https://eu.oukitel.com/cdn/shop/files/P2001Plus_f7c8526f-0996-4ad6-a1b9-c38d3bed1317_1800x1800.jpg?v=1720604045",
@@ -98,7 +98,7 @@ export const productsSeed = [
   {
     name: "Портативное зарядное устройство Oukitel P5000e plus 1600000 мАч",
     slug: "portable-charger-oukitel-p5000e-plus",
-    price: "1 139 990₸",
+    price: "1 113 000₸",
     kaspiReviewsUrl: "https://l.kaspi.kz/shop/DJcKJFVGAegqzSu",
     // oldPrice: "€599,00",
     // rating: 4.6,
